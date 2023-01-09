@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">You Only Die Once</string>
+    <string name="location_undead_asylum">Undead Asylum</string>
+    <string name="boss_asylum_demon">Asylum Demon</string>
+    <string name="boss_stray_demon">Stray Demon</string>
+    <string name="mini_boss_black_knight">Black Knight</string>
 </resources>
