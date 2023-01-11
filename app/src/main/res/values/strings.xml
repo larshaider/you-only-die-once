@@ -4,4 +4,6 @@
     <string name="boss_asylum_demon">Asylum Demon</string>
     <string name="boss_stray_demon">Stray Demon</string>
     <string name="mini_boss_black_knight">Black Knight</string>
+    <string name="location_abyss">Abyss</string>
+    <string name="boss_four_kings">Four Kings</string>
 </resources>
