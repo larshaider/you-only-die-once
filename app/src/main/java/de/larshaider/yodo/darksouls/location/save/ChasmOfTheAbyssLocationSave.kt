@@ -1,4 +1,7 @@
 package de.larshaider.yodo.darksouls.location.save
 
-class ChasmOfTheAbyssLocationSave {
-}
+import androidx.room.ColumnInfo
+
+data class ChasmOfTheAbyssLocationSave(
+    @ColumnInfo(name = "killed_manus_father_of_the_abyss") val hasKilledManusFatherOfTheAbyss: Boolean
+)

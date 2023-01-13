@@ -1,6 +1,6 @@
-package de.larshaider.yodo.core
+package de.larshaider.yodo.core.run.save
 
-interface Run {
+interface SavedRun {
 
     val id: Long
 
