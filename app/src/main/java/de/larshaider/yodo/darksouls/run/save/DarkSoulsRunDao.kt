@@ -6,6 +6,9 @@ import androidx.room.*
 @Dao
 interface DarkSoulsRunDao {
 
+    @Query("SELECT * FROM dark_souls_run where id = :runId")
+    fun find(runId: Long): DarkSoulsSavedRun?
+
     @Insert
     fun insert(run: DarkSoulsSavedRun): Long
 

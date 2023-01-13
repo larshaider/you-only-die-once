@@ -5,6 +5,10 @@ import de.larshaider.yodo.core.run.save.SavedRunRepository
 
 class LocalDarkSoulsSavedRunRepository(private val database: DarkSoulsRunDao) : SavedRunRepository<DarkSoulsSavedRun> {
 
+    override fun find(runId: Long): DarkSoulsSavedRun? {
+        return database.find(runId)
+    }
+
     override fun add(run: DarkSoulsSavedRun): Boolean {
         return database.insert(run) > 0
     }

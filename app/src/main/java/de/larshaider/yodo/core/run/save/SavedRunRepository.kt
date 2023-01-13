@@ -1,8 +1,11 @@
 package de.larshaider.yodo.core.run.save
 
 import androidx.lifecycle.LiveData
+import de.larshaider.yodo.darksouls.run.save.DarkSoulsSavedRun
 
 interface SavedRunRepository<T> where T : SavedRun {
+
+    fun find(runId: Long): DarkSoulsSavedRun?
 
     fun add(run: T): Boolean
 

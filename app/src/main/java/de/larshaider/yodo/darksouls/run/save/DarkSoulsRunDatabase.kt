@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 // TODO: remove singleton, change to injection library (hilt or koin)
-@Database(entities = [DarkSoulsSavedRun::class], version = 2, exportSchema = false)
+@Database(entities = [DarkSoulsSavedRun::class], version = 1, exportSchema = false)
 abstract class DarkSoulsRunDatabase : RoomDatabase() {
 
     abstract val darkSoulsRunDao: DarkSoulsRunDao
