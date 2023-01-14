@@ -1,4 +1,4 @@
-package de.larshaider.yodo.darksouls.run.save
+package de.larshaider.yodo.darksouls.run.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded

@@ -1,7 +1,9 @@
-package de.larshaider.yodo.darksouls.run.save
+package de.larshaider.yodo.darksouls.run.repository
 
 import androidx.lifecycle.LiveData
 import de.larshaider.yodo.core.run.save.SavedRunRepository
+import de.larshaider.yodo.darksouls.run.data.DarkSoulsSavedRun
+import de.larshaider.yodo.darksouls.run.database.DarkSoulsRunDao
 
 class LocalDarkSoulsSavedRunRepository(private val database: DarkSoulsRunDao) : SavedRunRepository<DarkSoulsSavedRun> {
 

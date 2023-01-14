@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import de.larshaider.yodo.core.run.save.SavedRunRepository
-import de.larshaider.yodo.darksouls.run.DarkSoulsRun
-import de.larshaider.yodo.darksouls.run.save.DarkSoulsSavedRun
+import de.larshaider.yodo.darksouls.run.data.DarkSoulsRun
+import de.larshaider.yodo.darksouls.run.data.DarkSoulsSavedRun
 import kotlinx.coroutines.*
 
 class DarkSoulsRunListViewModel(private val repository: SavedRunRepository<DarkSoulsSavedRun>) : ViewModel() {
@@ -16,7 +16,7 @@ class DarkSoulsRunListViewModel(private val repository: SavedRunRepository<DarkS
 
     private val savedRuns = repository.getAll()
     val runs: LiveData<List<DarkSoulsRun>> = Transformations.map(savedRuns) {
-        it.map { save -> DarkSoulsRun(save) }
+        it?.map { save -> DarkSoulsRun(save) }
     }
 
     private val _eventRunCreationResult = MutableLiveData<Boolean?>()
@@ -53,6 +53,18 @@ class DarkSoulsRunListViewModel(private val repository: SavedRunRepository<DarkS
         val savedRun = list.firstOrNull { it.id == run.id } ?: return false
         return withContext(Dispatchers.IO) {
             repository.delete(savedRun)
+        }
+    }
+
+    fun onClearRuns() {
+        uiScope.launch {
+            clearRuns()
+        }
+    }
+
+    private suspend fun clearRuns() {
+        withContext(Dispatchers.IO) {
+            repository.clear()
         }
     }
 

@@ -1,4 +1,4 @@
-package de.larshaider.yodo.darksouls.run
+package de.larshaider.yodo.darksouls.run.data
 
 import de.larshaider.yodo.core.location.Location
 import de.larshaider.yodo.core.run.Run
@@ -26,7 +26,6 @@ import de.larshaider.yodo.darksouls.location.undeadAsylum.UndeadAsylum
 import de.larshaider.yodo.darksouls.location.undeadBurg.UndeadBurg
 import de.larshaider.yodo.darksouls.location.undeadParish.UndeadParish
 import de.larshaider.yodo.darksouls.location.valleyOfDrakes.ValleyOfDrakes
-import de.larshaider.yodo.darksouls.run.save.DarkSoulsSavedRun
 
 class DarkSoulsRun(private val save: DarkSoulsSavedRun) : Run {
 
@@ -66,4 +65,21 @@ class DarkSoulsRun(private val save: DarkSoulsSavedRun) : Run {
             UndeadParish(save.undeadParish),
             ValleyOfDrakes(save.valleyOfDrakes)
         )
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) {
+            return true
+        }
+
+        if (javaClass != other?.javaClass) {
+            return false
+        }
+
+        other as DarkSoulsRun
+        return save == other.save
+    }
+
+    override fun hashCode(): Int {
+        return save.hashCode()
+    }
 }

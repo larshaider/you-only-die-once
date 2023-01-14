@@ -3,7 +3,7 @@ package de.larshaider.yodo.darksouls.run.list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import de.larshaider.yodo.core.run.save.SavedRunRepository
-import de.larshaider.yodo.darksouls.run.save.DarkSoulsSavedRun
+import de.larshaider.yodo.darksouls.run.data.DarkSoulsSavedRun
 
 class DarkSoulsRunListViewModelFactory(private val repository: SavedRunRepository<DarkSoulsSavedRun>) : ViewModelProvider.Factory {
 

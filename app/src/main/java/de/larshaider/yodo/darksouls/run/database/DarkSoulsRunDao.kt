@@ -1,7 +1,8 @@
-package de.larshaider.yodo.darksouls.run.save
+package de.larshaider.yodo.darksouls.run.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import de.larshaider.yodo.darksouls.run.data.DarkSoulsSavedRun
 
 @Dao
 interface DarkSoulsRunDao {
