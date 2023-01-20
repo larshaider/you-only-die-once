@@ -15,6 +15,7 @@ class DarkSoulsRunListViewModel(private val repository: SavedRunRepository<DarkS
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private val savedRuns = repository.getAll()
+
     val runs: LiveData<List<DarkSoulsRun>> = Transformations.map(savedRuns) {
         it?.map { save -> DarkSoulsRun(save) }
     }
