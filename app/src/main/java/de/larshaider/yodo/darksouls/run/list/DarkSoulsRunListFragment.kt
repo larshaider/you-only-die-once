@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import de.larshaider.yodo.darksouls.run.database.DarkSoulsRunDatabase
 import de.larshaider.yodo.darksouls.run.repository.LocalDarkSoulsSavedRunRepository
@@ -36,6 +38,8 @@ class DarkSoulsRunListFragment : Fragment() {
         val adapter = DarkSoulsRunAdapter()
         binding.darkSoulsRunList.adapter = adapter
 
+        binding.darkSoulsRunList.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))
+
         viewModel.runs.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
@@ -45,23 +49,19 @@ class DarkSoulsRunListFragment : Fragment() {
         }
 
         viewModel.eventRunCreationResult.observe(viewLifecycleOwner) {
-            if (it == null) {
-                return@observe
+            it?.let {
+                val message = if (it) "Success" else "Failure"
+                Snackbar.make(binding.root, message, Toast.LENGTH_SHORT).show()
+                viewModel.onRunCreationResultEventProcessed()
             }
-
-            val message = if (it) "Success" else "Failure"
-            Snackbar.make(binding.root, message, Toast.LENGTH_SHORT).show()
-            viewModel.onRunCreationResultEventProcessed()
         }
 
         viewModel.eventRunDeletionResult.observe(viewLifecycleOwner) {
-            if (it == null) {
-                return@observe
+            it?.let {
+                val message = if (it) "Success" else "Failure"
+                Snackbar.make(binding.root, message, Toast.LENGTH_SHORT).show()
+                viewModel.onRunDeletionResultEventProcessed()
             }
-
-            val message = if (it) "Success" else "Failure"
-            Snackbar.make(binding.root, message, Toast.LENGTH_SHORT).show()
-            viewModel.onRunDeletionResultEventProcessed()
         }
 
         binding.deleteDarkSoulsRuns.setOnClickListener {
