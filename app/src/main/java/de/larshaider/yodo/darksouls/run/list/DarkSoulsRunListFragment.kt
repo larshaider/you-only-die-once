@@ -37,10 +37,11 @@ class DarkSoulsRunListFragment : Fragment() {
         binding.darkSoulsRunList.adapter = adapter
 
         viewModel.runs.observe(viewLifecycleOwner) {
-            val isEmpty: Boolean = it.isEmpty()
-            binding.noContentInfo.visibility = if (isEmpty) View.VISIBLE else View.GONE
-
             adapter.submitList(it)
+        }
+
+        viewModel.noSavedRuns.observe(viewLifecycleOwner) {
+            binding.noContentInfo.visibility = if (it) View.VISIBLE else View.GONE
         }
 
         viewModel.eventRunCreationResult.observe(viewLifecycleOwner) {

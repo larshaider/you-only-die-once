@@ -19,6 +19,10 @@ class DarkSoulsRunListViewModel(private val repository: SavedRunRepository<DarkS
         it?.map { save -> DarkSoulsRun(save) }
     }
 
+    val noSavedRuns: LiveData<Boolean> = Transformations.map(savedRuns) {
+        it.isEmpty()
+    }
+
     private val _eventRunCreationResult = MutableLiveData<Boolean?>()
     val eventRunCreationResult: LiveData<Boolean?> get() = _eventRunCreationResult
 
