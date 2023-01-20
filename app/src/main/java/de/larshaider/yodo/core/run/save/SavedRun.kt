@@ -7,4 +7,7 @@ interface SavedRun {
     val startTime: Long
 
     val endTime: Long?
+
+    val isFinished: Boolean
+        get() = endTime != null
 }
