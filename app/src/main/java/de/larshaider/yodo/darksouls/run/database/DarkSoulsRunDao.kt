@@ -19,7 +19,7 @@ interface DarkSoulsRunDao {
     @Delete
     fun delete(run: DarkSoulsSavedRun): Int
 
-    @Query("SELECT * FROM dark_souls_run")
+    @Query("SELECT * FROM dark_souls_run order by start_time desc")
     fun getAll(): LiveData<List<DarkSoulsSavedRun>>
 
     @Query("DELETE FROM dark_souls_run")
