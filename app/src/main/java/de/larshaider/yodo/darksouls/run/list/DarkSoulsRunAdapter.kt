@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import de.larshaider.yodo.R
 import de.larshaider.yodo.darksouls.run.data.DarkSoulsRun
 import de.larshaider.yodo.databinding.ListItemDarkSoulsRunBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DarkSoulsRunAdapter : ListAdapter<DarkSoulsRun, DarkSoulsRunViewHolder>(DarkSoulsRunDiffCallback()) {
 
@@ -33,7 +35,9 @@ class DarkSoulsRunViewHolder private constructor(private val binding: ListItemDa
     }
 
     fun bind(item: DarkSoulsRun) {
-        // TODO
+        binding.runCurrentPoints.text = item.currentPoints.toString()
+        binding.runStart.text = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(item.startTime).toString()
+        binding.runEnd.text = if(item.endTime == null) "" else item.endTime.toString()
     }
 }
 
