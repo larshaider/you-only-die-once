@@ -4,12 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import de.larshaider.yodo.core.run.save.SavedRunRepository
 import de.larshaider.yodo.darksouls.run.data.DarkSoulsRun
 import de.larshaider.yodo.darksouls.run.data.DarkSoulsSavedRun
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
-class DarkSoulsRunListViewModel(private val repository: SavedRunRepository<DarkSoulsSavedRun>) : ViewModel() {
+@HiltViewModel
+class DarkSoulsRunListViewModel @Inject constructor(private val repository: SavedRunRepository<DarkSoulsSavedRun>) : ViewModel() {
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)

@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("io.gitlab.arturbosch.detekt") version "1.22.0"
     id("org.jlleitschuh.gradle.ktlint") version "11.1.0"
+    id("com.google.dagger.hilt.android")
     kotlin("android")
     kotlin("kapt")
 }
@@ -68,6 +69,7 @@ dependencies {
     val composeUI = "1.3.3"
     implementation("androidx.compose.ui:ui:$composeUI")
     implementation("androidx.compose.ui:ui-tooling-preview:$composeUI")
+    implementation("androidx.compose.runtime:runtime-livedata:$composeUI")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeUI")
     debugImplementation("androidx.compose.ui:ui-tooling:$composeUI")
     debugImplementation("androidx.compose.ui:ui-test-manifest:$composeUI")
@@ -92,4 +94,12 @@ dependencies {
     val composeRules = "0.0.26"
     detektPlugins("com.twitter.compose.rules:detekt:$composeRules")
     ktlintRuleset("com.twitter.compose.rules:ktlint:$composeRules")
+
+    val hilt = "2.44"
+    implementation("com.google.dagger:hilt-android:$hilt")
+    kapt("com.google.dagger:hilt-android-compiler:$hilt")
+}
+
+kapt {
+    correctErrorTypes = true
 }
