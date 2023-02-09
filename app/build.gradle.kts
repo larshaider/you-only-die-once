@@ -62,6 +62,7 @@ dependencies {
     val ktxLifecycle = "2.5.1"
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$ktxLifecycle")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$ktxLifecycle")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$ktxLifecycle")
 
     val composeActivity = "1.6.1"
     implementation("androidx.activity:activity-compose:$composeActivity")
@@ -98,6 +99,8 @@ dependencies {
     val hilt = "2.44"
     implementation("com.google.dagger:hilt-android:$hilt")
     kapt("com.google.dagger:hilt-android-compiler:$hilt")
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 }
 
 kapt {

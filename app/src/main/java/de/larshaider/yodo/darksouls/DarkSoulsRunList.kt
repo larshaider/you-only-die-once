@@ -21,7 +21,7 @@ fun DarkSoulsRunList(runs: List<DarkSoulsRun>) {
             items = runs,
             itemContent = { run ->
                 DarkSoulsRunRow(run = run, onRunClicked = {
-                    Toast.makeText(context, "Clicked run", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Clicked run ${run.id}", Toast.LENGTH_SHORT).show()
                 })
             }
         )
